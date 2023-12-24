@@ -1,5 +1,6 @@
 #include <vector>
 
+using namespace std;
 struct TreeNode
 {
     int val;
@@ -25,6 +26,7 @@ public:
         if (root == nullptr) {
             return;
         }
+
         visited.push_back(root->val);
         targetSum -= root->val;
         if (root->left == nullptr && root->right == nullptr) {
@@ -32,8 +34,8 @@ public:
                 ans.push_back(visited);
             }
         } else {
-            dfs(root->left, targetSum, path);
-            dfs(root->right, targetSum, path);
+            dfs(root->left, targetSum, visited);
+            dfs(root->right, targetSum, visited);
         }
 
     }
